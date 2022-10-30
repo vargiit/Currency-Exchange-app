@@ -20,8 +20,19 @@ function App() {
   }, [currency, submit, formData, seconds, minutes]);
 
   useEffect(() => {
+    const fetchData = async (currency) => {
+      const response = await axios.get(
+        `https://api.exchangerate.host/latest?base=${currency}`
+      );
+      const { rates } = response.data;
+      const rateList = [];
+      for (const [symbol, rate] of Object.entries(rates)) {
+        rateList.push({ symbol, rate });
+      }
+      dispatch({ type: "FETCH_DATA", payload: rateList });
+    };
     fetchData(currency);
-  }, [currency]);
+  }, [currency, dispatch]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,19 +45,8 @@ function App() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [seconds, submit]);
+  }, [seconds, submit, dispatch]);
 
-  const fetchData = async (currency) => {
-    const response = await axios.get(
-      `https://api.exchangerate.host/latest?base=${currency}`
-    );
-    const { rates } = response.data;
-    const rateList = [];
-    for (const [symbol, rate] of Object.entries(rates)) {
-      rateList.push({ symbol, rate });
-    }
-    dispatch({ type: "FETCH_DATA", payload: rateList });
-  };
   return (
     <>
       <h1>XChange - Rates</h1>

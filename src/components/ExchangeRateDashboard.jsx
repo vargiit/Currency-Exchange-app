@@ -88,9 +88,9 @@ const ExchangeRateDashboard = () => {
 
           <Card>
             <p style={{ textAlign: "center", fontWeight: "bold" }}>
-              Data refreshed {minutes < 10 ? "0" + minutes : minutes} :
+              Data refreshed {minutes < 10 ? "0" + minutes : minutes}:
               {seconds < 10 ? "0" + seconds : seconds}
-              ... ago
+              ... seconds ago
             </p>
           </Card>
         </div>
