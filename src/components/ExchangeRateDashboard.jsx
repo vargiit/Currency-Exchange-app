@@ -53,24 +53,26 @@ const ExchangeRateDashboard = () => {
         </div>
 
         <div className="chart">
-          <Card style={{ maxWidth: "fit-content" }}>
-            <BarChart
-              width={500}
-              height={300}
-              data={firstFiveCurrency}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <XAxis dataKey="symbol" />
-              <YAxis />
-              <Tooltip />
+          <Card style={{ maxWidth: "100%" }}>
+            <div style={{ width: "100%" }}>
+              <BarChart
+                width={400}
+                height={300}
+                data={firstFiveCurrency}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <XAxis dataKey="symbol" />
+                <YAxis />
+                <Tooltip />
 
-              <Bar dataKey="rate" fill="#8884d8" />
-            </BarChart>
+                <Bar dataKey="rate" fill="#6366f1" />
+              </BarChart>
+            </div>
           </Card>
 
           <Card

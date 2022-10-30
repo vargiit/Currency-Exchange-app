@@ -57,7 +57,7 @@ export const SignInForm = () => {
     <div className="contact-container">
       <div className="form-container">
         <div className="left-graphic">
-          <img src={illustration} alt="" />
+          <img src={illustration} alt="contact-us" />
         </div>
         <div className="card">
           <form onSubmit={formik.handleSubmit} className="p-fluid">

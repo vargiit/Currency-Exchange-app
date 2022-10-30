@@ -4,6 +4,7 @@ import "./App.css";
 import ExchangeRateDashboard from "./components/ExchangeRateDashboard";
 import { SignInForm } from "./components/SignInForm";
 import { useCurrency } from "./context/currencyContext";
+import currencyicon from "./assets/currencyicon.ico";
 
 function App() {
   const {
@@ -49,7 +50,14 @@ function App() {
 
   return (
     <>
-      <h1>XChange - Rates</h1>
+      <h1>
+        <img
+          src={currencyicon}
+          alt="icon"
+          style={{ width: "50px", height: "50px" }}
+        />
+        <span style={{ marginLeft: "2rem" }}> XChange - Rates</span>
+      </h1>
 
       {submit ? (
         <div className="page-container">

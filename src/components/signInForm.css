@@ -47,16 +47,25 @@ img {
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 426px) {
   .left-graphic {
-    /* display: none; */
-    max-width: 230px;
-    max-height: 20px;
-    position: absolute;
-    bottom: 130px;
+    max-width: 20rem;
+
+    margin-top: 1rem;
   }
 
-  .contact-container {
-    align-items: flex-start;
+  .form-container {
+    flex-direction: column;
+
+    height: 100%;
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    padding: 1.5rem;
   }
 }

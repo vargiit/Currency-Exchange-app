@@ -25,8 +25,11 @@
 h1 {
   font-family: "Bungee", cursive;
   text-align: center;
-  background-color: #6d3ebe;
+  background-color: #6366f1;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page-container {
@@ -37,5 +40,9 @@ h1 {
   .page-container {
     height: 100%;
     padding: 0;
+  }
+
+  h1 span {
+    font-size: 1.5rem;
   }
 }
