@@ -1,0 +1,22 @@
+.featured-stats li {
+  list-style: none;
+  border-top: 1px solid rgba(123, 148, 163, 0.25);
+}
+
+.featured-stats li:first-child {
+  border-top: none;
+}
+.stat-header::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin: 15px 0;
+  background-color: #ccc;
+}
+
+.stat-value {
+  color: #0b85e5;
+  font-size: 20px;
+  font-weight: 300;
+}

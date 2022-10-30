@@ -1,0 +1,62 @@
+.contact-container {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-heading {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #2d3051;
+}
+.form-container {
+  display: flex;
+}
+
+.left-graphic {
+  max-width: 450px;
+  max-height: 350px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.card {
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+}
+.card form {
+  margin-top: 2rem;
+}
+.card .field {
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 960px) {
+  .card {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .card {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .left-graphic {
+    /* display: none; */
+    max-width: 230px;
+    max-height: 20px;
+    position: absolute;
+    bottom: 130px;
+  }
+
+  .contact-container {
+    align-items: flex-start;
+  }
+}

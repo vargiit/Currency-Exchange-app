@@ -1,0 +1,88 @@
+.rate-metrics {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.dropdown-container li {
+  list-style: none;
+}
+
+.dropdown {
+  margin-bottom: 1rem;
+}
+
+.p-card .p-card-body {
+  padding: 0.5rem !important;
+}
+
+button.p-button.p-component.p-button-raised.p-button-rounded {
+  background: #6d3ebe;
+}
+
+.chart {
+  gap: 0.5rem;
+}
+.currency-rate {
+  text-align: center;
+}
+
+@media only screen and (max-width: 425px) {
+  .rate-metrics {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    position: relative;
+  }
+  * {
+    max-width: 100%;
+  }
+
+  button.p-button.p-component.p-button-raised.p-button-rounded {
+    position: absolute;
+    top: 1rem;
+    right: 21px;
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+
+  .dropdown-container > :first-child {
+    position: absolute;
+    top: 1rem;
+    left: 21px;
+    max-width: 100%;
+  }
+
+  .p-card .p-card-content {
+    padding: 0 !important;
+  }
+
+  .dropdown-container .dropdown {
+    margin-top: 4.5rem;
+    margin-bottom: 0.5rem !important;
+    width: 24rem;
+  }
+
+  .chart {
+    padding: 0 1rem;
+  }
+
+  .currency-rate-mobile {
+    display: block !important;
+  }
+  .currency-rate-mobile ul {
+    list-style: none;
+  }
+
+  .currency-rate {
+    display: none;
+  }
+}
