@@ -6,7 +6,7 @@ import "./signInForm.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import illustration from "../assets/keep-in-touch.jpg";
-import { useCurrency } from "../context/CurrencyContent";
+import { useCurrency } from "../context/currencyContext";
 
 export const SignInForm = () => {
   const { dispatch } = useCurrency();

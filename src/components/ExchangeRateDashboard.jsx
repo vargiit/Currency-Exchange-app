@@ -5,7 +5,7 @@ import { Card } from "primereact/card";
 import "./exchangeRates.css";
 import FeaturedStats from "./FeaturedStats";
 import { Button } from "primereact/button";
-import { useCurrency } from "../context/CurrencyContent";
+import { useCurrency } from "../context/currencyContext";
 
 const ExchangeRateDashboard = () => {
   const {

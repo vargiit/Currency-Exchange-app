@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import ExchangeRateDashboard from "./components/ExchangeRateDashboard";
 import { SignInForm } from "./components/SignInForm";
-import { useCurrency } from "./context/CurrencyContent";
+import { useCurrency } from "./context/currencyContext";
 
 function App() {
   const {
