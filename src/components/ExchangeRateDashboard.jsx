@@ -5,20 +5,14 @@ import { Card } from "primereact/card";
 import "./exchangeRates.css";
 import FeaturedStats from "./FeaturedStats";
 import { Button } from "primereact/button";
+import { useCurrency } from "../context/CurrencyContent";
 
-const ExchangeRateDashboard = ({
-  rate,
-  setCurrency,
-  currency,
-  formData,
-  minutes,
-  seconds,
-  setSeconds,
-  setMinutes,
-  setSubmit,
-}) => {
+const ExchangeRateDashboard = () => {
+  const {
+    state: { rate, currency, formData, seconds, minutes },
+    dispatch,
+  } = useCurrency();
   const firstFiveCurrency = rate.slice(0, 5);
-
   return (
     <>
       <div className="rate-metrics">
@@ -30,7 +24,7 @@ const ExchangeRateDashboard = ({
           <Button
             label="Sign out"
             className="p-button-raised p-button-rounded"
-            onClick={() => setSubmit(false)}
+            onClick={() => dispatch({ type: "SUBMIT", payload: false })}
           />
 
           <Dropdown
@@ -41,9 +35,9 @@ const ExchangeRateDashboard = ({
             value={currency}
             options={rate}
             onChange={(e) => {
-              setSeconds(0);
-              setMinutes(0);
-              setCurrency((prev) => (prev = e.value));
+              dispatch({ type: "SECONDS_RESET" });
+
+              dispatch({ type: "CURRENCY_UPDATE", payload: e.value });
             }}
           />
 

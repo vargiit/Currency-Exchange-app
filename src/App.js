@@ -1,37 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import ExchangeRateDashboard from "./components/ExchangeRateDashboard";
 import { SignInForm } from "./components/SignInForm";
+import { useCurrency } from "./context/CurrencyContent";
 
 function App() {
-  const [rate, setRate] = useState([]);
-  const [currency, setCurrency] = useState("INR");
-  const [submit, setSubmit] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-
-  console.log(submit);
-
-  useEffect(() => {
-    if (window.localStorage.getItem("currency") === null) {
-      console.log("fjdh");
-      window.localStorage.setItem("currency", JSON.stringify("INR"));
-    }
-
-    setSubmit(JSON.parse(window.localStorage.getItem("submit")));
-    setSeconds(JSON.parse(window.localStorage.getItem("seconds")));
-    setCurrency(JSON.parse(window.localStorage.getItem("currency")));
-    setFormData(JSON.parse(window.localStorage.getItem("formData")));
-  }, []);
+  const {
+    state: { submit, currency, seconds, formData, minutes },
+    dispatch,
+  } = useCurrency();
 
   useEffect(() => {
     window.localStorage.setItem("submit", submit);
     window.localStorage.setItem("seconds", seconds);
+    window.localStorage.setItem("seconds", minutes);
     window.localStorage.setItem("currency", JSON.stringify(currency));
     window.localStorage.setItem("formData", JSON.stringify(formData));
-  }, [currency, submit, formData, seconds]);
+  }, [currency, submit, formData, seconds, minutes]);
 
   useEffect(() => {
     fetchData(currency);
@@ -39,15 +25,16 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds((prev) => prev + 1);
+      dispatch({ type: "SET_SECONDS" });
+
       if (seconds === 59) {
-        setMinutes((prev) => prev + 1);
-        setSeconds(0);
+        dispatch({ type: "SET_MINUTES" });
+        dispatch({ type: "SECONDS_RESET" });
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [submit, seconds]);
+  }, [seconds, submit]);
 
   const fetchData = async (currency) => {
     const response = await axios.get(
@@ -58,8 +45,7 @@ function App() {
     for (const [symbol, rate] of Object.entries(rates)) {
       rateList.push({ symbol, rate });
     }
-
-    setRate(rateList);
+    dispatch({ type: "FETCH_DATA", payload: rateList });
   };
   return (
     <>
@@ -67,26 +53,10 @@ function App() {
 
       {submit ? (
         <div className="page-container">
-          <ExchangeRateDashboard
-            rate={rate}
-            setCurrency={setCurrency}
-            currency={currency}
-            formData={formData}
-            minutes={minutes}
-            seconds={seconds}
-            setSeconds={setSeconds}
-            setMinutes={setMinutes}
-            setSubmit={setSubmit}
-          />
+          <ExchangeRateDashboard />
         </div>
       ) : (
-        <SignInForm
-          setSubmit={setSubmit}
-          formData={formData}
-          setFormData={setFormData}
-          setSeconds={setSeconds}
-          setMinutes={setMinutes}
-        />
+        <SignInForm />
       )}
     </>
   );

@@ -1,19 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { currencyReducer, initialState } from "./currencyReducer";
 
 const currencyContext = createContext({});
-const { Provider, Consumer } = currencyContext;
+const { Provider } = currencyContext;
 
-const YourProvider = ({ children, ...props }) => {
-  const [state, setState] = useState(null);
+const CurrencyContextProvider = ({ children, ...props }) => {
+  const [state, dispatch] = useReducer(currencyReducer, initialState);
 
   return (
-    <Provider value={{ state }} {...props}>
+    <Provider value={{ state, dispatch }} {...props}>
       {children}
     </Provider>
   );
 };
 
-const usecurrencyContext = () => {
+const useCurrency = () => {
   const state = useContext(currencyContext);
   if (state === undefined) {
     throw new Error("usecurrencyContext must be called within YourProvider");
@@ -24,6 +25,6 @@ const usecurrencyContext = () => {
   };
 };
 
-export { YourProvider, usecurrencyContext };
+export { CurrencyContextProvider, useCurrency };
 
 export default currencyContext;

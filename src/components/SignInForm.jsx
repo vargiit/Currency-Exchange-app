@@ -6,14 +6,11 @@ import "./signInForm.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import illustration from "../assets/keep-in-touch.jpg";
+import { useCurrency } from "../context/CurrencyContent";
 
-export const SignInForm = ({
-  setSubmit,
-  formData,
-  setFormData,
-  setSeconds,
-  setMinutes,
-}) => {
+export const SignInForm = () => {
+  const { dispatch } = useCurrency();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -37,10 +34,11 @@ export const SignInForm = ({
       return errors;
     },
     onSubmit: (data) => {
-      setFormData(data);
-      setSubmit(true);
-      setSeconds(0);
-      setMinutes(0);
+      dispatch({ type: "FORMDATA_UPDATE", payload: data });
+      dispatch({ type: "SUBMIT", payload: true });
+      dispatch({ type: "SECONDS_RESET", payload: true });
+      dispatch({ type: "MINUTES_RESET", payload: true });
+
       formik.resetForm();
     },
   });
