@@ -5,6 +5,9 @@ The app stores and preserves your data, allowing you to pick up from where you l
 
 ## Project Screenshot
 
+###Mobile View
+![GitHub Logo](/src/assets/Desktop view - dashboard.PNG)
+
 ## Installation and Setup Instructions
 
 #### Example:
