@@ -1,6 +1,6 @@
 # Xchange-Rates App
 
-This currency converter app has exchange rates available for over 190 countries.you just have to select the currency from the dropdown to compare with five currency rates.The app allows you to access currency charts and comes with an easy-to-use interface.
+This currency converter app has exchange rates available for over 190 countries, you just have to select the currency from the dropdown to compare with five currency rates.The app allows you to access currency charts and comes with an easy-to-use interface.
 The app stores and preserves your data, allowing you to pick up from where you left.
 
 ## Project Screenshot
