@@ -7,12 +7,12 @@ The app stores and preserves your data, allowing you to pick up from where you l
 
 ### Mobile View
 
-![Mobile](/src/assets/Desktop%20view%20-%20dashboard.PNG)
 ![Mobile](/src/assets/Mobile%20view.PNG)
+![Mobile](/src/assets/Mobile%20view-dashboard.PNG)
 
 ### Desktop View
-![Desktop](/src/assets/Mobile%20view-dashboard.PNG)
 ![Desktop](/src/assets/Desktop%20view.PNG)
+![Desktop](/src/assets/Desktop%20view%20-%20dashboard.PNG)
 
 
 ## Installation and Setup Instructions
