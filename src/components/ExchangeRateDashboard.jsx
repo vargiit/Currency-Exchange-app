@@ -24,7 +24,10 @@ const ExchangeRateDashboard = () => {
           <Button
             label="Sign out"
             className="p-button-raised p-button-rounded"
-            onClick={() => dispatch({ type: "SUBMIT", payload: false })}
+            onClick={() => {
+              localStorage.removeItem("currency");
+              dispatch({ type: "SUBMIT", payload: false });
+            }}
           />
 
           <Dropdown
@@ -35,7 +38,7 @@ const ExchangeRateDashboard = () => {
             value={currency}
             options={rate}
             onChange={(e) => {
-              dispatch({ type: "SECONDS_RESET" });
+              dispatch({ type: "SECONDS_RESET", payload: "seconds" });
 
               dispatch({ type: "CURRENCY_UPDATE", payload: e.value });
             }}

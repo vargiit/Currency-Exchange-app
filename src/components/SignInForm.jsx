@@ -35,10 +35,7 @@ export const SignInForm = () => {
     },
     onSubmit: (data) => {
       dispatch({ type: "FORMDATA_UPDATE", payload: data });
-      dispatch({ type: "SUBMIT", payload: true });
-      dispatch({ type: "SECONDS_RESET", payload: true });
-      dispatch({ type: "MINUTES_RESET", payload: true });
-
+      window.localStorage.clear();
       formik.resetForm();
     },
   });

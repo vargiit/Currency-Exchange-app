@@ -27,6 +27,9 @@ export const currencyReducer = (state = initialState, action) => {
     case "FORMDATA_UPDATE":
       return {
         ...state,
+        submit: true,
+        seconds: 0,
+        minutes: 0,
         formData: action.payload,
       };
     case "SET_SECONDS":
@@ -42,12 +45,7 @@ export const currencyReducer = (state = initialState, action) => {
     case "SECONDS_RESET":
       return {
         ...state,
-        seconds: 0,
-      };
-    case "MINUTES_RESET":
-      return {
-        ...state,
-        minutes: 0,
+        [action.payload]: 0,
       };
 
     default:

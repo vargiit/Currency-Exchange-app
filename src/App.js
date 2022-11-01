@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("submit", submit);
     window.localStorage.setItem("seconds", seconds);
-    window.localStorage.setItem("seconds", minutes);
+    window.localStorage.setItem("minutes", minutes);
     window.localStorage.setItem("currency", JSON.stringify(currency));
     window.localStorage.setItem("formData", JSON.stringify(formData));
   }, [currency, submit, formData, seconds, minutes]);
@@ -25,6 +25,7 @@ function App() {
       const response = await axios.get(
         `https://api.exchangerate.host/latest?base=${currency}`
       );
+      console.log(response.data);
       const { rates } = response.data;
       const rateList = [];
       for (const [symbol, rate] of Object.entries(rates)) {
@@ -41,7 +42,7 @@ function App() {
 
       if (seconds === 59) {
         dispatch({ type: "SET_MINUTES" });
-        dispatch({ type: "SECONDS_RESET" });
+        dispatch({ type: "SECONDS_RESET", payload: "seconds" });
       }
     }, 1000);
 
