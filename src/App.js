@@ -13,11 +13,11 @@ function App() {
   } = useCurrency();
 
   useEffect(() => {
-    window.localStorage.setItem("submit", submit);
-    window.localStorage.setItem("seconds", seconds);
-    window.localStorage.setItem("minutes", minutes);
-    window.localStorage.setItem("currency", JSON.stringify(currency));
-    window.localStorage.setItem("formData", JSON.stringify(formData));
+    localStorage.setItem("submit", submit);
+    localStorage.setItem("seconds", seconds);
+    localStorage.setItem("minutes", minutes);
+    localStorage.setItem("currency", JSON.stringify(currency));
+    localStorage.setItem("formData", JSON.stringify(formData));
   }, [currency, submit, formData, seconds, minutes]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
       const response = await axios.get(
         `https://api.exchangerate.host/latest?base=${currency}`
       );
-      console.log(response.data);
+
       const { rates } = response.data;
       const rateList = [];
       for (const [symbol, rate] of Object.entries(rates)) {
@@ -47,8 +47,9 @@ function App() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [seconds, submit, dispatch]);
+  }, [seconds, dispatch]);
 
+  console.log("In App");
   return (
     <>
       <h1>

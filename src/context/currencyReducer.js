@@ -42,7 +42,7 @@ export const currencyReducer = (state = initialState, action) => {
         ...state,
         minutes: state.minutes + 1,
       };
-    case "SECONDS_RESET":
+    case "RESET":
       return {
         ...state,
         [action.payload]: 0,

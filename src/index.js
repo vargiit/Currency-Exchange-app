@@ -8,9 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <CurrencyContextProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </CurrencyContextProvider>
 );
 

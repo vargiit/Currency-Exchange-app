@@ -27,7 +27,7 @@ const FeaturedStats = () => {
   ];
 
   return (
-    <div>
+    <div className="space-between">
       <Card>
         <h2 className="stat-header">Key figures</h2>
         <ul className="featured-stats">

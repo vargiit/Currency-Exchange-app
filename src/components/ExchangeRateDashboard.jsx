@@ -7,12 +7,18 @@ import FeaturedStats from "./FeaturedStats";
 import { Button } from "primereact/button";
 import { useCurrency } from "../context/currencyContext";
 
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.css";
+
 const ExchangeRateDashboard = () => {
   const {
     state: { rate, currency, formData, seconds, minutes },
     dispatch,
   } = useCurrency();
-  const firstFiveCurrency = rate.slice(0, 5);
+
+  let firstFiveCurrency = rate.slice(0, 5);
+
   return (
     <>
       <div className="rate-metrics">
@@ -38,18 +44,22 @@ const ExchangeRateDashboard = () => {
             value={currency}
             options={rate}
             onChange={(e) => {
-              dispatch({ type: "SECONDS_RESET", payload: "seconds" });
-
+              dispatch({ type: "RESET", payload: "seconds" });
+              dispatch({ type: "RESET", payload: "minutes" });
               dispatch({ type: "CURRENCY_UPDATE", payload: e.value });
             }}
           />
 
           <Card className="currency-rate" style={{ maxWidth: "inherit" }}>
             <ul>
+              <h3 style={{ paddingBottom: "2px" }}>
+                Symbol <span>Rates</span>
+              </h3>
               {firstFiveCurrency.map((currency) => (
-                <li key={currency.symbol} style={{ paddingBottom: "2px" }}>
-                  <strong>{currency.symbol} </strong> : {currency.rate}
-                </li>
+                <div className="currency-rate-container" key={currency.symbol}>
+                  <strong>{currency.symbol}</strong>
+                  <span>{currency.rate}</span>
+                </div>
               ))}
             </ul>
           </Card>
@@ -83,8 +93,8 @@ const ExchangeRateDashboard = () => {
             style={{ maxWidth: "inherit", display: "none" }}
           >
             <ul>
-              {firstFiveCurrency.map((currency) => (
-                <li key={currency.symbol} style={{ paddingBottom: "2px" }}>
+              {firstFiveCurrency.map((currency, index) => (
+                <li key={index} style={{ paddingBottom: "2px" }}>
                   <strong>{currency.symbol} </strong> : {currency.rate}
                 </li>
               ))}
