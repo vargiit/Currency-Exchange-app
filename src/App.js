@@ -42,7 +42,7 @@ function App() {
 
       if (seconds === 59) {
         dispatch({ type: "SET_MINUTES" });
-        dispatch({ type: "SECONDS_RESET", payload: "seconds" });
+        dispatch({ type: "RESET", payload: "seconds" });
       }
     }, 1000);
 
