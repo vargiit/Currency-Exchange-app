@@ -42,6 +42,7 @@
 .currency-rate-container span {
   border-left: 1px solid black;
   padding: 0 1rem;
+  width: 6rem;
 }
 
 strong {
