@@ -49,7 +49,6 @@ function App() {
     return () => clearInterval(interval);
   }, [seconds, dispatch]);
 
-  console.log("In App");
   return (
     <>
       <h1>

@@ -35,7 +35,6 @@ export const SignInForm = () => {
     },
     onSubmit: (data) => {
       dispatch({ type: "FORMDATA_UPDATE", payload: data });
-      window.localStorage.clear();
       formik.resetForm();
     },
   });

@@ -7,10 +7,6 @@ import FeaturedStats from "./FeaturedStats";
 import { Button } from "primereact/button";
 import { useCurrency } from "../context/currencyContext";
 
-import "primeicons/primeicons.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-import "primereact/resources/primereact.css";
-
 const ExchangeRateDashboard = () => {
   const {
     state: { rate, currency, formData, seconds, minutes },
